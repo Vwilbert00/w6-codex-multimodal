@@ -39,3 +39,8 @@ Keep the existing Image 1 preview working. Make sure changing one image does not
 Reuse the existing beginner-friendly JavaScript approach. Do not modify the Ollama request yet. We will implement processing two images in a later step.
 
 Third Prompt
+My application now displays previews for two images, but Image 2 is much larger than Image 1.
+Please update only style.css so both image previews have a maximum width of 400px, remain responsive, and preserve their original aspect ratios.
+Keep the existing styling and make the smallest necessary changes.
+
+Fourth Prompt:

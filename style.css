@@ -44,11 +44,13 @@ section {
   margin-top: 24px;
 }
 
-#image-preview {
+#image-preview,
+#image-preview-2 {
   max-width: 400px;
 }
 
-#image-preview img {
+#image-preview img,
+#image-preview-2 img {
   display: block;
   max-width: 100%;
   width: auto;
