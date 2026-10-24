@@ -1,0 +1,15 @@
+First Prompt
+I am working on a school assignment to build an Image-to-Text application using HTML, CSS, JavaScript, and Ollama.
+
+Start with only the HTML interface in index.html. Create a simple webpage with an image file input, a "Describe Image" button, an area for an image preview, and an area for the AI-generated description.
+
+Link style.css and main.js, but do not implement the JavaScript or CSS yet. Keep the HTML simple and beginner-friendly. Do not build the entire application at once.
+
+Second Prompt
+Now that the HTML interface is complete, help me implement image preview functionality in main.js.
+
+When the user selects an image using the file input, display that image inside the image-preview div.
+
+Use simple beginner-friendly JavaScript and explain how it works.
+
+Do not connect to Ollama yet. Only implement the image preview feature.
