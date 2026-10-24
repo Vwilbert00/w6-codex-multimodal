@@ -51,5 +51,3 @@ Reuse my existing convertImageToBase64() function and Ollama API request structu
 Keep the JavaScript simple and beginner-friendly. Preserve both image previews and the existing loading and error handling.
 If either image is missing, display a clear message asking the user to select both images.
 Do not change the CSS unless necessary.
-
-Fifth Prompt:
