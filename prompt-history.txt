@@ -1,3 +1,4 @@
+TASK 1
 First Prompt
 I am working on a school assignment to build an Image-to-Text application using HTML, CSS, JavaScript, and Ollama.
 Start with only the HTML interface in index.html. Create a simple webpage with an image file input, a "Describe Image" button, an area for an image preview, and an area for the AI-generated description.
@@ -22,3 +23,19 @@ Please use simple JavaScript and explain how to convert the selected image into 
 Modify only what's necessary in main.js and index.html. Keep my existing image preview functionality working.
 Implement only the Ollama connection for Task 1, not Task 2.
 
+TASK 2
+First Prompt
+I have completed Task 1 of my Image-to-Text application using HTML, CSS, JavaScript, and Ollama.
+I am now working on Task 2, which requires supporting two images.
+First, modify only index.html to allow the user to select two separate images.
+Add two clearly labeled file inputs, one for Image 1 and one for Image 2, and separate preview areas for each image.
+Keep the existing Describe Image button and description section for now.
+Do not modify main.js or connect the second image to Ollama yet. I want to build Task 2 step by step.
+
+Second Prompt
+My HTML now has two image inputs: image-input and image-input-2, with preview areas image-preview and image-preview-2.
+Please update main.js so both images can be previewed independently when selected.
+Keep the existing Image 1 preview working. Make sure changing one image does not remove the other image's preview.
+Reuse the existing beginner-friendly JavaScript approach. Do not modify the Ollama request yet. We will implement processing two images in a later step.
+
+Third Prompt

@@ -1,29 +1,35 @@
 const imageInput = document.getElementById("image-input");
-const imagePreview = document.getElementById("image-preview");
+const secondImageInput = document.getElementById("image-input-2");
 const describeButton = document.getElementById("describe-button");
 const description = document.getElementById("description");
-let imageUrl = null;
 
-imageInput.addEventListener("change", function () {
-  const file = imageInput.files[0];
+function setupImagePreview(input, preview) {
+  let imageUrl = null;
 
-  imagePreview.textContent = "";
+  input.addEventListener("change", function () {
+    const file = input.files[0];
 
-  if (imageUrl) {
-    URL.revokeObjectURL(imageUrl);
-    imageUrl = null;
-  }
+    preview.textContent = "";
 
-  if (!file) {
-    return;
-  }
+    if (imageUrl) {
+      URL.revokeObjectURL(imageUrl);
+      imageUrl = null;
+    }
 
-  const image = document.createElement("img");
-  imageUrl = URL.createObjectURL(file);
-  image.src = imageUrl;
-  image.alt = "Selected image preview";
-  imagePreview.appendChild(image);
-});
+    if (!file) {
+      return;
+    }
+
+    const image = document.createElement("img");
+    imageUrl = URL.createObjectURL(file);
+    image.src = imageUrl;
+    image.alt = "Selected image preview";
+    preview.appendChild(image);
+  });
+}
+
+setupImagePreview(imageInput, document.getElementById("image-preview"));
+setupImagePreview(secondImageInput, document.getElementById("image-preview-2"));
 
 function convertImageToBase64(file) {
   return new Promise(function (resolve, reject) {
