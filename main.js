@@ -55,47 +55,69 @@ function convertImageToBase64(file) {
   });
 }
 
-describeButton.addEventListener("click", async function () {
-  const file = imageInput.files[0];
+async function getImageDescription(file) {
+  const base64Image = await convertImageToBase64(file);
+  const response = await fetch("http://localhost:11434/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "llava:7b",
+      messages: [
+        {
+          role: "user",
+          content: "Describe this image.",
+          images: [base64Image]
+        }
+      ],
+      stream: false
+    })
+  });
 
-  if (!file) {
-    description.textContent = "Please choose an image first.";
+  if (!response.ok) {
+    throw new Error("Ollama returned an error: " + response.status);
+  }
+
+  const result = await response.json();
+  if (!result.message || typeof result.message.content !== "string") {
+    throw new Error("Ollama returned an unexpected response.");
+  }
+
+  return result.message.content;
+}
+
+describeButton.addEventListener("click", async function () {
+  const firstFile = imageInput.files[0];
+  const secondFile = secondImageInput.files[0];
+
+  if (!firstFile || !secondFile) {
+    description.textContent = "Please select both images before requesting descriptions.";
     return;
   }
 
   describeButton.disabled = true;
-  description.textContent = "Generating description...";
+  description.textContent = "Generating descriptions...";
 
   try {
-    const base64Image = await convertImageToBase64(file);
-    const response = await fetch("http://localhost:11434/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "llava:7b",
-        messages: [
-          {
-            role: "user",
-            content: "Describe this image.",
-            images: [base64Image]
-          }
-        ],
-        stream: false
-      })
-    });
+    const firstDescription = await getImageDescription(firstFile);
+    const secondDescription = await getImageDescription(secondFile);
 
-    if (!response.ok) {
-      throw new Error("Ollama returned an error: " + response.status);
-    }
+    description.textContent = "";
 
-    const result = await response.json();
-    if (!result.message || typeof result.message.content !== "string") {
-      throw new Error("Ollama returned an unexpected response.");
-    }
+    const firstResult = document.createElement("p");
+    const firstLabel = document.createElement("strong");
+    firstLabel.textContent = "Image 1: ";
+    firstResult.appendChild(firstLabel);
+    firstResult.appendChild(document.createTextNode(firstDescription));
+    description.appendChild(firstResult);
 
-    description.textContent = result.message.content;
+    const secondResult = document.createElement("p");
+    const secondLabel = document.createElement("strong");
+    secondLabel.textContent = "Image 2: ";
+    secondResult.appendChild(secondLabel);
+    secondResult.appendChild(document.createTextNode(secondDescription));
+    description.appendChild(secondResult);
   } catch (error) {
     description.textContent = "Could not generate a description. " + error.message;
   } finally {

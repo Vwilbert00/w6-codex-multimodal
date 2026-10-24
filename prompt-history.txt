@@ -44,3 +44,12 @@ Please update only style.css so both image previews have a maximum width of 400p
 Keep the existing styling and make the smallest necessary changes.
 
 Fourth Prompt:
+My Image-to-Text application now successfully previews two images.
+Please update main.js so that when I click the Describe Image button, both images are sent to Ollama using the llava:7b model.
+Generate a separate AI description for Image 1 and Image 2, and clearly label each result.
+Reuse my existing convertImageToBase64() function and Ollama API request structure.
+Keep the JavaScript simple and beginner-friendly. Preserve both image previews and the existing loading and error handling.
+If either image is missing, display a clear message asking the user to select both images.
+Do not change the CSS unless necessary.
+
+Fifth Prompt:
