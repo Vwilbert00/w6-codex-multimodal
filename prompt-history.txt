@@ -13,3 +13,12 @@ When the user selects an image using the file input, display that image inside t
 Use simple beginner-friendly JavaScript and explain how it works.
 
 Do not connect to Ollama yet. Only implement the image preview feature.
+
+Third Prompt
+Help me style my Image-to-Text webpage using style.css.
+
+Make the interface clean and simple, with a centered layout, readable text, and a nicely styled Describe Image button.
+
+Make sure the image preview is responsive and doesn't exceed 400px in width while keeping its original aspect ratio.
+
+Keep the CSS beginner-friendly. Do not change the HTML or JavaScript, and do not connect Ollama yet.
